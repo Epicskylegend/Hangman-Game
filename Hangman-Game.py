@@ -1,16 +1,21 @@
 import random
 import math
+import re
 
 class  Hangman:
 
-    words = ["pizza", "flower", "cherry"]
+    words = ["pizza", "flower", "cherry", "rrrrrr"]
     alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
                 "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
                 "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
     randWord = random.choice(words)
     spacing = []
-    storedLetters = []
     randNumber = 0
+    endResult = ""
+    missingCharacters = {}
+    missingValues = missingCharacters.values
+    
+
 
 
     subtract = len(randWord) /2 
@@ -34,25 +39,24 @@ class  Hangman:
         letterToReplace = random.randrange(len(randNumList))
         letterReplaced = randNumList[letterToReplace]
 
-        storedLetters.append(randList[letterReplaced]) # Stores the characters the user needs to guess
-        print(storedLetters)
+
+        missingCharacters[letterReplaced] = randList[letterReplaced]# dictinoary that stores the characters and values the user needs to guess
+        print(missingCharacters)
 
         randNumList.pop(letterToReplace)
    
 
         #print(replaceLetter)
         randList[letterReplaced] = "_"
-        newWord = ''.join(randList)
+        #newWord = ''.join(randList)
     print("\n\n\n") 
-    print(newWord)
+    print(randList)
 
 
-
-  
-    
+ 
    
     print("Guess a letter for the word above\n")
-    while newWord != randWord:   
+    while endResult != randWord:   
 
         
         for i in range(len(randWord)):
@@ -63,16 +67,26 @@ class  Hangman:
         #print(newSpacing) 
     
     
-        validInput = input("Guess a letter: ")
-        if validInput in alphabet and len(validInput) == 1:
-            print("The letter you guess is: " + validInput + ".")
+        validLetters = input("Guess a letter: ")
+        if validLetters in alphabet and len(validLetters) == 1:
+            print("The letter you guess is: " + validLetters + ".")
         else:
             print("Invalid input. Enter in a single letter.")
-        if validInput in randWord:
-            print("There is at least 1 " + validInput + " inside of this word.")
+
+
+        if validLetters in missingCharacters:
+            print("There is at least 1 " + validLetters + " missing inside of this word.")
+
+
+            
+            #endResult == ",".split(newWord)
+            #print(endResult)
+        
+           
+          
             print("The word now looks like " )
         else:
-            print("There are NOT any " + validInput + "'s inside of this word. That's a strike.")
+            print("There are NOT any " + validLetters + "'s missing inside of this word. That's a strike.")
       
         
 
