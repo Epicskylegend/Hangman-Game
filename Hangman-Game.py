@@ -1,6 +1,8 @@
 import random
 import math
+
 class  Hangman:
+
     words = ["pizza", "flower", "cherry"]
     randWord = random.choice(words)
     spacing = []
@@ -16,10 +18,10 @@ class  Hangman:
     randNumList = []
     for i in range(len(randWord)):
         randList.append(randWord[i])
-        print(randList)
+        #print(randList)
         randNumList.append(randNumber)
         randNumber +=1 
-    print(randNumList)
+    #print(randNumList)
 
     
 
@@ -32,7 +34,7 @@ class  Hangman:
         randList[letterReplaced] = "_"
         newWord = ''.join(randList)
     
-        print(newWord)
+    print(newWord)
 
 
 
