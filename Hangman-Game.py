@@ -49,22 +49,22 @@ class  Hangman:
     
    
     print("Guess a letter for the word below\n")
-    """while newWord != randWord:   
+    while newWord != randWord:   
 
-        print(randWord)
+        
         for i in range(len(randWord)):
            if i < len(randWord):
-                spacing += "_"
-                i+=1
+                #spacing += "_"
+              
                 newSpacing = ''.join(spacing)
-        print(newSpacing) """
+        #print(newSpacing) 
     
     
-    validInput = input(randWord)
-    if validInput.isalpha and len(validInput) == 1:
-        print("The letter you guess is " + validInput + ".")
-    else:
-        print("Invalid input.")
+        validInput = input("Guess a letter: ")
+        if validInput.isalpha == True and len(validInput) == 1:
+            print("The letter you guess is: " + validInput + ".")
+        else:
+            print("Invalid input.")
       
         
 
