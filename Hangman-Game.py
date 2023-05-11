@@ -68,6 +68,11 @@ class  Hangman:
             print("The letter you guess is: " + validInput + ".")
         else:
             print("Invalid input. Enter in a single letter.")
+        if validInput in randWord:
+            print("There is at least 1 " + validInput + " inside of this word.")
+            print("The word now looks like " )
+        else:
+            print("There are NOT any " + validInput + "'s inside of this word. That's a strike.")
       
         
 
