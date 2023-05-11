@@ -6,6 +6,7 @@ class  Hangman:
     words = ["pizza", "flower", "cherry"]
     randWord = random.choice(words)
     spacing = []
+    storedLetters = []
     randNumber = 0
 
 
@@ -26,14 +27,20 @@ class  Hangman:
     
 
     for i in range(lettersToRemove):
+
         letterToReplace = random.randrange(len(randNumList))
         letterReplaced = randNumList[letterToReplace]
+
+        storedLetters.append(randList[letterReplaced]) # Stores the characters the user needs to guess
+        print(storedLetters)
+
         randNumList.pop(letterToReplace)
-       
+   
+
         #print(replaceLetter)
         randList[letterReplaced] = "_"
         newWord = ''.join(randList)
-    
+    print("\n\n\n") 
     print(newWord)
 
 
@@ -41,7 +48,7 @@ class  Hangman:
   
     
    
-    print("Guess a letter for the word below")
+    print("Guess a letter for the word below\n")
     """while newWord != randWord:   
 
         print(randWord)
