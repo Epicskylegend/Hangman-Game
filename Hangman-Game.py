@@ -1,15 +1,40 @@
 import random
+import math
 class  Hangman:
     words = ["pizza", "flower", "cherry"]
     randWord = random.choice(words)
-    newWord = 1
     spacing = []
+    randNumber = 0
 
-   
+
+    subtract = len(randWord) /2 
+    math.floor(subtract)
+    lettersToRemove =  math.floor(subtract)
+    #print(lettersToRemove)
+
     randList = []
+    randNumList = []
     for i in range(len(randWord)):
         randList.append(randWord[i])
-    print(randList)
+        print(randList)
+        randNumList.append(randNumber)
+        randNumber +=1 
+    print(randNumList)
+
+    
+
+    for i in range(lettersToRemove):
+        letterToReplace = random.randrange(len(randNumList))
+        letterReplaced = randNumList[letterToReplace]
+        randNumList.pop(letterToReplace)
+       
+        #print(replaceLetter)
+        randList[letterReplaced] = "_"
+        newWord = ''.join(randList)
+    
+        print(newWord)
+
+
 
   
     
