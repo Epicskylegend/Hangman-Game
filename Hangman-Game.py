@@ -5,9 +5,13 @@ class  Hangman:
     newWord = 1
     spacing = []
 
-    randList = randWord.split(",")
+   
+    randList = []
+    for i in range(len(randWord)):
+        randList.append(randWord[i])
     print(randList)
-    print("\n")
+
+  
     
    
     print("Guess a letter for the word below")
@@ -27,7 +31,7 @@ class  Hangman:
         print("The letter you guess is " + validInput + ".")
     else:
         print("Invalid input.")
-        print("yes")
+      
         
 
   
