@@ -4,6 +4,9 @@ import math
 class  Hangman:
 
     words = ["pizza", "flower", "cherry"]
+    alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
+                "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
+                "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
     randWord = random.choice(words)
     spacing = []
     storedLetters = []
@@ -48,7 +51,7 @@ class  Hangman:
   
     
    
-    print("Guess a letter for the word below\n")
+    print("Guess a letter for the word above\n")
     while newWord != randWord:   
 
         
@@ -61,10 +64,10 @@ class  Hangman:
     
     
         validInput = input("Guess a letter: ")
-        if validInput.isalpha == True and len(validInput) == 1:
+        if validInput in alphabet and len(validInput) == 1:
             print("The letter you guess is: " + validInput + ".")
         else:
-            print("Invalid input.")
+            print("Invalid input. Enter in a single letter.")
       
         
 
