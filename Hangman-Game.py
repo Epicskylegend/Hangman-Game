@@ -24,9 +24,10 @@ class Hangman:
 
     wordToSolve = []
     randNumList = []
+
     for i in range(len(randWord)):
         wordToSolve.append(randWord[i])
-        #print(randList)
+       
         randNumList.append(randNumber)
         randNumber +=1 
     #print(randNumList)
@@ -63,7 +64,7 @@ class Hangman:
         if validLetter in alphabet and len(validLetter) == 1:
             print("The letter you guess is: " + validLetter + ".")
 
-        elif validLetter in alphabet and len(validLetter) > 1:
+        elif validLetter.isalpha() and len(validLetter) > 1:
             print("You can only enter in one letter at a time.\n")
 
 
@@ -83,17 +84,18 @@ class Hangman:
             print(wordToSolve)
             print("\n")
            
-        elif validLetter == int :
-            print("Invalid Input. Please enter in a letter.\n")
+        elif validLetter.isnumeric():
+            print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
             print("The word currently looks like: ")
             print(wordToSolve)
             print("\n")
-        else:
+
+        elif validLetter in alphabet and validLetter not in missingCharacters.keys():
             print("There are NOT any " + validLetter + "'s missing inside of this word. You lose a life.\n")
             print("The word currently looks like: ")
             print(wordToSolve)
             print("\n")
-            lives -= 1
+            lives -= 1 
            
             
             if lives >= 1:
