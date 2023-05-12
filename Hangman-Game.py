@@ -4,7 +4,7 @@ import re
 
 class  Hangman:
 
-    words = ["pizza", "flower", "cherry"]
+    words = ["pizza", "flower", "cherry", "finished", "persuaded"]
     alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
                 "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
                 "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
@@ -13,6 +13,7 @@ class  Hangman:
     randNumber = 0
     endResult = ""
     missingCharacters = {}
+    lives = 7
    
     
 
@@ -101,8 +102,16 @@ class  Hangman:
            
         else:
             print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.")
+            lives -= 1
+            print("You now have " + str(lives) + " lives remaining.\n")
+
+
         if missingCharacters == {}:
-            print("You solved the word " + randWord + " congratulations.")
+            print("You solved the word " + randWord + " congratulations.\n")
+            raise SystemExit
+        
+        if lives == 0:
+            print("You ran out of lives and the game ends.")
             raise SystemExit
 
     
