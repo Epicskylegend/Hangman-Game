@@ -2,14 +2,14 @@ import random
 import math
 import re
 
-class  Hangman:
+class Hangman:
 
-    words = ["pizza", "flower", "cherry", "finished", "persuaded"]
+    words = ["pizza", "flower", "cherry", "finished", "persuaded"] # Word to solve
     alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
                 "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
                 "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
-    randWord = random.choice(words)
-    spacing = []
+    
+    randWord = random.choice(words) # Random word selected from words list
     randNumber = 0
     endResult = ""
     missingCharacters = {}
@@ -17,11 +17,9 @@ class  Hangman:
    
     
 
-
-
     subtract = len(randWord) /2 
     math.floor(subtract)
-    lettersToRemove =  math.floor(subtract)
+    numLettersToRemove =  math.floor(subtract)
     #print(lettersToRemove)
 
     randList = []
@@ -35,7 +33,7 @@ class  Hangman:
 
     
 
-    for i in range(lettersToRemove):
+    for i in range(numLettersToRemove):
 
         letterToReplace = random.randrange(len(randNumList))
         indexReplaced = randNumList[letterToReplace]
@@ -45,7 +43,7 @@ class  Hangman:
         #missingCharacters[randList[indexReplaced]] = [indexReplaced] # dictionary that stores values user needs to guess 
         
         missingCharacters[randList[indexReplaced]] = missingCharacters.get(randList[indexReplaced], []) + [indexReplaced] 
-        print(missingCharacters)
+        #print(missingCharacters)
 
         randNumList.pop(letterToReplace)
    
@@ -58,17 +56,9 @@ class  Hangman:
 
 
  
-    print(randWord)
+    
     print("Guess a letter for the word above\n")
     while endResult != randWord:   
-
-        
-        for i in range(len(randWord)):
-           if i < len(randWord):
-                #spacing += "_"
-              
-                newSpacing = ''.join(spacing)
-        #print(newSpacing) 
     
     
         validLetter = input("Guess a letter: ")
@@ -89,12 +79,8 @@ class  Hangman:
                 #print(randList)
 
             missingCharacters.pop(validLetter)
-            print(missingCharacters)
-            endResult == ''.join(randList)
-            print(endResult)
-
-
-           
+    
+            
           
             print("The word now looks like:")
             print(randList)
@@ -102,7 +88,11 @@ class  Hangman:
            
         else:
             print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.\n")
+            print("The word currently looks like: ")
+            print(randList)
+            print("\n")
             lives -= 1
+            
             if lives >= 1:
                 print("You now have " + str(lives) + " lives remaining.\n")
 
@@ -113,14 +103,4 @@ class  Hangman:
         
         if lives == 0:
             print("You ran out of lives and the game ends.\n")
-            raise SystemExit
-
-    
-        
-      
-        
-
-  
-    #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-
-   
+            raise SystemExit 
