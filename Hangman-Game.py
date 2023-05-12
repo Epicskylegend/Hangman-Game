@@ -57,7 +57,7 @@ class  Hangman:
 
 
  
-   
+    print(randWord)
     print("Guess a letter for the word above\n")
     while endResult != randWord:   
 
@@ -85,21 +85,28 @@ class  Hangman:
 
             for i in (missingCharacters[validLetter]):
                 randList[i] = validLetter
-                print(randList)
+                #print(randList)
 
             missingCharacters.pop(validLetter)
             print(missingCharacters)
+            endResult == ''.join(randList)
+            print(endResult)
 
 
-            
-            #endResult == ",".split(newWord)
-            #print(endResult)
-        
            
           
-            print("The word now looks like" )
+            print("The word now looks like:")
+            print(randList)
+            print("\n")
+           
         else:
             print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.")
+        if missingCharacters == {}:
+            print("You solved the word " + randWord + " congratulations.")
+            raise SystemExit
+
+    
+        
       
         
 
