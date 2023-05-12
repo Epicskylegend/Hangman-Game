@@ -77,12 +77,12 @@ class  Hangman:
         if validLetter in alphabet and len(validLetter) == 1:
             print("The letter you guess is: " + validLetter + ".")
         else:
-            print("Invalid input. Enter in a single letter.")
+            print("Invalid input. Enter in a single letter.\n")
 
 
 
         if validLetter in missingCharacters.keys():
-            print("There is at least 1 " + validLetter + " missing inside of this word.")
+            print("There is at least 1 " + validLetter + " missing inside of this word.\n")
 
             for i in (missingCharacters[validLetter]):
                 randList[i] = validLetter
@@ -101,9 +101,10 @@ class  Hangman:
             print("\n")
            
         else:
-            print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.")
+            print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.\n")
             lives -= 1
-            print("You now have " + str(lives) + " lives remaining.\n")
+            if lives >= 1:
+                print("You now have " + str(lives) + " lives remaining.\n")
 
 
         if missingCharacters == {}:
@@ -111,7 +112,7 @@ class  Hangman:
             raise SystemExit
         
         if lives == 0:
-            print("You ran out of lives and the game ends.")
+            print("You ran out of lives and the game ends.\n")
             raise SystemExit
 
     
