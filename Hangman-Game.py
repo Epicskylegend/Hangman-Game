@@ -4,7 +4,7 @@ import re
 
 class  Hangman:
 
-    words = ["pizza", "flower", "cherry", "rrrrrr"]
+    words = ["pizza", "flower", "cherry"]
     alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
                 "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
                 "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
@@ -13,7 +13,7 @@ class  Hangman:
     randNumber = 0
     endResult = ""
     missingCharacters = {}
-    missingValues = missingCharacters.values
+   
     
 
 
@@ -37,17 +37,20 @@ class  Hangman:
     for i in range(lettersToRemove):
 
         letterToReplace = random.randrange(len(randNumList))
-        letterReplaced = randNumList[letterToReplace]
+        indexReplaced = randNumList[letterToReplace]
 
 
-        missingCharacters[letterReplaced] = randList[letterReplaced]# dictinoary that stores the characters and values the user needs to guess
+        
+        #missingCharacters[randList[indexReplaced]] = [indexReplaced] # dictionary that stores values user needs to guess 
+        
+        missingCharacters[randList[indexReplaced]] = missingCharacters.get(randList[indexReplaced], []) + [indexReplaced] 
         print(missingCharacters)
 
         randNumList.pop(letterToReplace)
    
 
         #print(replaceLetter)
-        randList[letterReplaced] = "_"
+        randList[indexReplaced] = "_"
         #newWord = ''.join(randList)
     print("\n\n\n") 
     print(randList)
@@ -67,15 +70,25 @@ class  Hangman:
         #print(newSpacing) 
     
     
-        validLetters = input("Guess a letter: ")
-        if validLetters in alphabet and len(validLetters) == 1:
-            print("The letter you guess is: " + validLetters + ".")
+        validLetter = input("Guess a letter: ")
+        
+       
+        if validLetter in alphabet and len(validLetter) == 1:
+            print("The letter you guess is: " + validLetter + ".")
         else:
             print("Invalid input. Enter in a single letter.")
 
 
-        if validLetters in missingCharacters:
-            print("There is at least 1 " + validLetters + " missing inside of this word.")
+
+        if validLetter in missingCharacters.keys():
+            print("There is at least 1 " + validLetter + " missing inside of this word.")
+
+            for i in (missingCharacters[validLetter]):
+                randList[i] = validLetter
+                print(randList)
+
+            missingCharacters.pop(validLetter)
+            print(missingCharacters)
 
 
             
@@ -84,9 +97,9 @@ class  Hangman:
         
            
           
-            print("The word now looks like " )
+            print("The word now looks like" )
         else:
-            print("There are NOT any " + validLetters + "'s missing inside of this word. That's a strike.")
+            print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.")
       
         
 
