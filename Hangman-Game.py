@@ -22,10 +22,10 @@ class Hangman:
     numLettersToRemove =  math.floor(subtract)
     #print(lettersToRemove)
 
-    randList = []
+    wordToSolve = []
     randNumList = []
     for i in range(len(randWord)):
-        randList.append(randWord[i])
+        wordToSolve.append(randWord[i])
         #print(randList)
         randNumList.append(randNumber)
         randNumber +=1 
@@ -42,17 +42,17 @@ class Hangman:
         
         #missingCharacters[randList[indexReplaced]] = [indexReplaced] # dictionary that stores values user needs to guess 
         
-        missingCharacters[randList[indexReplaced]] = missingCharacters.get(randList[indexReplaced], []) + [indexReplaced] 
+        missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] 
         #print(missingCharacters)
 
         randNumList.pop(letterToReplace)
    
 
         #print(replaceLetter)
-        randList[indexReplaced] = "_"
+        wordToSolve[indexReplaced] = "_"
         #newWord = ''.join(randList)
     print("\n\n\n") 
-    print(randList)
+    print(wordToSolve)
 
 
  
@@ -75,7 +75,7 @@ class Hangman:
             print("There is at least 1 " + validLetter + " missing inside of this word.\n")
 
             for i in (missingCharacters[validLetter]):
-                randList[i] = validLetter
+                wordToSolve[i] = validLetter
                 #print(randList)
 
             missingCharacters.pop(validLetter)
@@ -83,13 +83,13 @@ class Hangman:
             
           
             print("The word now looks like:")
-            print(randList)
+            print(wordToSolve)
             print("\n")
            
         else:
             print("There are NOT any " + validLetter + "'s missing inside of this word. That's a strike.\n")
             print("The word currently looks like: ")
-            print(randList)
+            print(wordToSolve)
             print("\n")
             lives -= 1
             
