@@ -32,7 +32,7 @@ class Hangman():
         randNumber +=1 
     #print(randNumList)
 
-    
+
 
     for i in range(numLettersToRemove):
 

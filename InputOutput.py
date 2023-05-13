@@ -1,8 +1,8 @@
 
 def welcomeToGame():
-        print("\n")
-        print("Welcome to the hangman game.")  
-        print("\n") 
+    print("\n")
+    print("Welcome to the hangman game.")  
+    print("\n") 
 
 
 #def numbLettersToRemove(subtract, randWord):
