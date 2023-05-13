@@ -32,7 +32,7 @@ def noLettersMissing(validLetter):
 
 # Function called to display the leftover lives of the user
 def remainingLives(lives):
-        print("You now have " + str(lives) + " lives remaining.\n")
+        print("You currently have " + str(lives) + " lives remaining.\n")
 
 
 # Function that is called if the user solves the word
