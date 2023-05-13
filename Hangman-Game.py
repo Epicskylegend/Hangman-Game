@@ -44,17 +44,22 @@ class Hangman:
    
 
         wordToSolve[indexReplaced] = "_"
-      
-    print("\n\n\n") 
-    print(wordToSolve)
 
+    print("\n")
+    print("Welcome to the hangman game.")  
+    print("\n") 
+   
 
     
-    print("Guess a letter for the word above\n")
+    print("Guess a letter for the word below.\n")
+    print(wordToSolve)
+    print("\n") 
+
     while endResult != randWord:   
        
     
-        validLetter = input("Guess a letter: ")
+        validLetter = input("Letter: ")
+        print("\n") 
         
         
        
@@ -73,9 +78,9 @@ class Hangman:
         if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
             print("There is 1 " + '"' + validLetter + '"' + " missing from this word.\n")
 
-            for i in (missingCharacters[validLetter]):
-                
+            for i in (missingCharacters[validLetter]):    
                 wordToSolve[i] = validLetter
+
             missingCharacters.pop(validLetter)
             print("The word now looks like:")
             print(wordToSolve)
