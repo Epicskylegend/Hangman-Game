@@ -11,16 +11,54 @@ class Hangman:
     endResult = ""
     missingCharacters = {}
     lives = 7
-   
-    
-    subtract = len(randWord) /2 
-    math.floor(subtract)
-    numLettersToRemove =  math.floor(subtract)
-    #print(lettersToRemove)
 
     wordToSolve = []
     randNumList = []
 
+    # Helper functions below
+
+    # Function that welcomes user to the game
+    def welcomeToGame():
+        print("\n")
+        print("Welcome to the hangman game.")  
+        print("\n") 
+
+    # Function to print the word the user needs to solve
+    def displayWordToSolve(wordToSolve):
+        print("The word currently looks like:")
+        print(wordToSolve)
+        print("\n")
+
+
+    # Function that prompts user to guess a word
+    def guessALetter(wordToSolve):
+        print("Guess a letter for the word below.\n")
+        print(wordToSolve)
+        print("\n") 
+
+    # Function that tells user when they guess a letter that isn't missing
+    def noLettersMissing(validLetter):
+        print("There are no " + validLetter + "'s missing inside of this word. You lose a life.\n")
+    
+
+    # Function to display text if the user runs out of lives
+    def outOfLives(randWord):
+        print("You ran out of lives and the game ends.\n")
+        print("The word you were trying to solve was " + '"' + randWord + '"' + ".\n")
+        raise SystemExit 
+
+
+        
+
+   
+    
+    subtract = len(randWord)/2 
+    math.floor(subtract)
+
+    numLettersToRemove =  math.floor(subtract)
+    #print(lettersToRemove)
+
+   
     for i in range(len(randWord)):
         wordToSolve.append(randWord[i])
        
@@ -45,26 +83,23 @@ class Hangman:
 
         wordToSolve[indexReplaced] = "_"
 
-    print("\n")
-    print("Welcome to the hangman game.")  
-    print("\n") 
+    welcomeToGame()
+    guessALetter(wordToSolve)
+   
    
 
     
-    print("Guess a letter for the word below.\n")
-    print(wordToSolve)
-    print("\n") 
-
+   
     while endResult != randWord:   
        
-    
-        validLetter = input("Letter: ")
-        print("\n") 
+       
+        validLetter = input("The letter you guess is: ")
         
         
        
         if validLetter.isalpha and len(validLetter) == 1:
-            print("The letter you guess is: " + validLetter + ".")
+           print("\n")
+     
 
         
 
@@ -77,14 +112,13 @@ class Hangman:
 
         if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
             print("There is 1 " + '"' + validLetter + '"' + " missing from this word.\n")
+            
 
             for i in (missingCharacters[validLetter]):    
                 wordToSolve[i] = validLetter
 
             missingCharacters.pop(validLetter)
-            print("The word now looks like:")
-            print(wordToSolve)
-            print("\n")
+           
 
 
         elif validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) > 1:
@@ -95,28 +129,23 @@ class Hangman:
                 wordToSolve[i] = validLetter   
 
             missingCharacters.pop(validLetter)
-            print("The word now looks like:")
-            print(wordToSolve)
-            print("\n")
+    
 
 
            
         elif not validLetter.isalpha():
             print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
-            print("The word currently looks like: ")
-            print(wordToSolve)
-            print("\n")
+   
+
 
         elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
-            print("There are no " + validLetter + "'s missing inside of this word. You lose a life.\n")
-            print("The word currently looks like:")
-            print(wordToSolve)
-            print("\n")
-            lives -= 1 
-           
+            noLettersMissing(validLetter)
+            lives -=1
+
+        displayWordToSolve(wordToSolve)
             
-            if lives >= 1:
-                print("You now have " + str(lives) + " lives remaining.\n")
+        if lives >= 1:
+            print("You now have " + str(lives) + " lives remaining.\n")
 
 
         if missingCharacters == {}:
@@ -124,6 +153,4 @@ class Hangman:
             raise SystemExit
         
         if lives == 0:
-            print("You ran out of lives and the game ends.\n")
-            print("The word you were trying to solve was " + '"' + randWord + '"' + ".\n")
-            raise SystemExit 
+            outOfLives(randWord)
