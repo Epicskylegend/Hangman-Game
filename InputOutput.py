@@ -11,18 +11,33 @@ def welcomeToGame():
     #  numLettersToRemove =  math.floor(subtract)
 
 
-    # Function to print the word the user needs to solve
+# Function to print the word the user needs to solve
 def displayWordToSolve(wordToSolve):
     print("The word currently looks like:")
     print(wordToSolve)
     print("\n")
 
 
-    # Function that prompts user to guess a word
+# Function that prompts user to guess a word
 def guessALetter(wordToSolve):
     print("Guess a letter for the word below.\n")
     print(wordToSolve)
     print("\n") 
+
+
+# Function that gives the user an error when they enter in more than 1 letter
+def invalidMultipleLetters():
+    print("Invalid input. You can only enter in one letter at a time.\n")
+
+
+# Function that tells user that there is one of the letter they guessed missing
+def oneLetterMissing(validLetter):
+      print("There is 1 " + '"' + validLetter + '"' + " missing from this word.\n")
+
+
+# Function that tells user that there are multiple of the letter they guessed missing
+def multipleLettersMissing(validLetter, missingCharacters):
+    print("There are " + '"' + str(len(missingCharacters[validLetter])) + '" ' +  validLetter + "'s" + " missing from the word.")
 
 
 # Function that tells user when they guess a letter that isn't missing

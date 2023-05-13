@@ -63,11 +63,10 @@ class Hangman():
      
 
         elif validLetter.isalpha() and len(validLetter) > 1:
-            print("Invalid input. You can only enter in one letter at a time.\n")
-
+            invalidMultipleLetters()
 
         if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
-            print("There is 1 " + '"' + validLetter + '"' + " missing from this word.\n")
+            oneLetterMissing(validLetter)
 
 
             for i in (missingCharacters[validLetter]):    
@@ -78,8 +77,8 @@ class Hangman():
 
 
         elif validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) > 1:
-            print("There are " + '"' + str(len(missingCharacters[validLetter])) + '" ' +  validLetter + "'s" + " missing from the word.")
-
+            
+            multipleLettersMissing(validLetter, missingCharacters)
 
             for i in (missingCharacters[validLetter]):
                 wordToSolve[i] = validLetter   
