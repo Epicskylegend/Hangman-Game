@@ -88,7 +88,7 @@ class Hangman():
 
            
         elif not validLetter.isalpha():
-            print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
+            invalidNumber(validLetter)
    
 
 

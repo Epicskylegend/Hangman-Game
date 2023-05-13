@@ -29,6 +29,10 @@ def guessALetter(wordToSolve):
 def invalidMultipleLetters():
     print("Invalid input. You can only enter in one letter at a time.\n")
 
+# Functions that tells the user they entered in an integer which isn't allowed
+def invalidNumber(validLetter):
+     print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
+
 
 # Function that tells user that there is one of the letter they guessed missing
 def oneLetterMissing(validLetter):
