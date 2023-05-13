@@ -36,9 +36,21 @@ class Hangman:
         print(wordToSolve)
         print("\n") 
 
+
     # Function that tells user when they guess a letter that isn't missing
     def noLettersMissing(validLetter):
         print("There are no " + validLetter + "'s missing inside of this word. You lose a life.\n")
+
+
+    # Function called to display the leftover lives of the user
+    def remainingLives(lives):
+         print("You now have " + str(lives) + " lives remaining.\n")
+
+
+    # Function that is called if the user solves the word
+    def wordSolved(randWord):
+        print("You solved the word " + '"' + randWord + '"'  + ", congratulations.\n")
+        raise SystemExit
     
 
     # Function to display text if the user runs out of lives
@@ -48,9 +60,7 @@ class Hangman:
         raise SystemExit 
 
 
-        
-
-   
+         
     
     subtract = len(randWord)/2 
     math.floor(subtract)
@@ -87,32 +97,22 @@ class Hangman:
     guessALetter(wordToSolve)
    
    
-
-    
-   
     while endResult != randWord:   
        
        
-        validLetter = input("The letter you guess is: ")
-        
-        
+        validLetter = input("The letter you guess is: ")  
        
         if validLetter.isalpha and len(validLetter) == 1:
            print("\n")
      
 
-        
-
-
-
         elif validLetter.isalpha() and len(validLetter) > 1:
             print("Invalid input. You can only enter in one letter at a time.\n")
 
 
-
         if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
             print("There is 1 " + '"' + validLetter + '"' + " missing from this word.\n")
-            
+
 
             for i in (missingCharacters[validLetter]):    
                 wordToSolve[i] = validLetter
@@ -131,7 +131,6 @@ class Hangman:
             missingCharacters.pop(validLetter)
     
 
-
            
         elif not validLetter.isalpha():
             print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
@@ -145,12 +144,11 @@ class Hangman:
         displayWordToSolve(wordToSolve)
             
         if lives >= 1:
-            print("You now have " + str(lives) + " lives remaining.\n")
+            remainingLives(lives)
 
 
         if missingCharacters == {}:
-            print("You solved the word " + '"' + randWord + '"'  + ", congratulations.\n")
-            raise SystemExit
+            wordSolved(randWord)
         
         if lives == 0:
             outOfLives(randWord)
