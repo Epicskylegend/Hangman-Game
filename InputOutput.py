@@ -45,7 +45,7 @@ def multipleLettersMissing(validLetter, missingCharacters):
 
 
 # Function that tells user when they guess a letter that isn't missing
-def noLettersMissing(validLetter):
+def wrongLetter(validLetter):
     print("There are no " + validLetter + "'s missing inside of this word. You lose a life.\n")
 
 

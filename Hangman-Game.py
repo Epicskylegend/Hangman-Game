@@ -93,7 +93,7 @@ class Hangman():
 
 
         elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
-            noLettersMissing(validLetter)
+            wrongLetter(validLetter)
             lives -=1
 
         displayWordToSolve(wordToSolve)
