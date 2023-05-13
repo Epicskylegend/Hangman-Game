@@ -16,9 +16,6 @@ class Hangman():
     wordToSolve = []
     randNumList = []
 
-    # Helper functions below
-
-   
  
     subtract = len(randWord)/2 
     math.floor(subtract)
@@ -28,7 +25,6 @@ class Hangman():
 
     
 
-   
     for i in range(len(randWord)):
         wordToSolve.append(randWord[i])
        

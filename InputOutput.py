@@ -5,10 +5,10 @@ def welcomeToGame():
         print("\n") 
 
 
-    #def numbLettersToRemove(subtract, randWord):
-      #  subtract = len(randWord)/2 
-      #  math.floor(subtract)
-      #  numLettersToRemove =  math.floor(subtract)
+#def numbLettersToRemove(subtract, randWord):
+    #  subtract = len(randWord)/2 
+    #  math.floor(subtract)
+    #  numLettersToRemove =  math.floor(subtract)
 
 
     # Function to print the word the user needs to solve
