@@ -5,9 +5,6 @@ import re
 class Hangman:
 
     words = ["pizza", "flower", "cherry", "finished", "persuaded"] # Word to solve
-    alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
-                "p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I",
-                "J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
     
     randWord = random.choice(words) # Random word selected from words list
     randNumber = 0
@@ -90,7 +87,7 @@ class Hangman:
             print(wordToSolve)
             print("\n")
 
-        elif validLetter in alphabet and validLetter not in missingCharacters.keys():
+        elif validLetter.isalpha and validLetter not in missingCharacters.keys():
             print("There are NOT any " + validLetter + "'s missing inside of this word. You lose a life.\n")
             print("The word currently looks like: ")
             print(wordToSolve)
@@ -103,10 +100,10 @@ class Hangman:
 
 
         if missingCharacters == {}:
-            print("You solved the word " + randWord + " congratulations.\n")
+            print("You solved the word " + '"' + randWord + '"'  + " congratulations.\n")
             raise SystemExit
         
         if lives == 0:
             print("You ran out of lives and the game ends.\n")
-            print("The word you were trying to solve was " + randWord + ".\n")
+            print("The word you were trying to solve was " + '"' + randWord + '"' + ".\n")
             raise SystemExit 
