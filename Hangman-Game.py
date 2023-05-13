@@ -61,11 +61,11 @@ class Hangman:
         validLetter = input("Guess a letter: ")
         
        
-        if validLetter in alphabet and len(validLetter) == 1:
+        if validLetter.isalpha and len(validLetter) == 1:
             print("The letter you guess is: " + validLetter + ".")
 
         elif validLetter.isalpha() and len(validLetter) > 1:
-            print("You can only enter in one letter at a time.\n")
+            print("Invalid input. You can only enter in one letter at a time.\n")
 
 
 
@@ -84,7 +84,7 @@ class Hangman:
             print(wordToSolve)
             print("\n")
            
-        elif validLetter.isnumeric():
+        elif not validLetter.isalpha():
             print( str(validLetter) + " is not a valid input. Please enter in a letter.""\n")
             print("The word currently looks like: ")
             print(wordToSolve)
