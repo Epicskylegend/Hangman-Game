@@ -108,7 +108,7 @@ class Hangman:
             print("\n")
 
         elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
-            print("There are NOT any " + validLetter + "'s missing inside of this word. You lose a life.\n")
+            print("There are no " + validLetter + "'s missing inside of this word. You lose a life.\n")
             print("The word currently looks like:")
             print(wordToSolve)
             print("\n")
