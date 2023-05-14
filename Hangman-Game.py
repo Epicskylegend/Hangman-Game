@@ -1,13 +1,9 @@
-import random
-import math
 import re
 from InputOutput import *
+from RandWordGenerator import *
 
 class Hangman():
-
-    words = ["pizza", "flower", "cherry", "finished", "persuaded"] # Word to solve
-    
-    randWord = random.choice(words) # Random word selected from words list
+   
     randNumber = 0
     endResult = ""
     missingCharacters = {}
@@ -17,10 +13,7 @@ class Hangman():
     randNumList = []
 
  
-    subtract = len(randWord)/2 
-    math.floor(subtract)
-
-    numLettersToRemove =  math.floor(subtract)
+   
     #print(lettersToRemove)
 
     
