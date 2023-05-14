@@ -1,6 +1,7 @@
 import re
 from InputOutput import *
 from RandWordGenerator import *
+from GameLogic import *
 
 class Hangman():
    
@@ -18,7 +19,7 @@ class Hangman():
        
         randNumList.append(randNumber)
         randNumber +=1 
-    #print(randNumList)
+    print(randNumList)
 
 
 
@@ -71,12 +72,10 @@ class Hangman():
 
             missingCharacters.pop(validLetter)
     
-
            
         elif not validLetter.isalpha():
             invalidNumber(validLetter)
    
-
 
         elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
             wrongLetter(validLetter)
