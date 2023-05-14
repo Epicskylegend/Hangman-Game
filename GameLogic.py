@@ -1,17 +1,28 @@
 import random
+#from RandWordGenerator import numLettersToRemove
+
+missingCharacters = {}
+wordToSolve = []
+randNumList = []
+
 
 def replacingLetters(randNumList, indexReplaced):
     letterToReplace = random.randrange(len(randNumList))
     indexReplaced = randNumList[letterToReplace]
 
-"""wordToSolve = []
-randNumList = []
-missingCharacters = {}
 
-letterToReplace = random.randrange(len(randNumList))
-indexReplaced = randNumList[letterToReplace]
+def removeLetterFromDict(randNumList, letterToReplace):
+    randNumList.pop(letterToReplace)
+   
 
+def replacingAndStoringLetters(numLettersToRemove):
+    for i in range(numLettersToRemove):
 
-missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
+        letterToReplace = random.randrange(len(randNumList))
+        indexReplaced = randNumList[letterToReplace]
 
-randNumList.pop(letterToReplace)"""
+        missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
+
+        removeLetterFromDict(randNumList, letterToReplace)
+
+        wordToSolve[indexReplaced] = "_"

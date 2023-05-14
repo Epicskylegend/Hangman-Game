@@ -7,34 +7,28 @@ class Hangman():
    
     randNumber = 0
     endResult = ""
-    missingCharacters = {}
+    #missingCharacters = {}
     lives = 7
 
-    wordToSolve = []
-    randNumList = []
+    #wordToSolve = []
+    #randNumList = []
 
 
-    for i in range(len(randWord)):
-        wordToSolve.append(randWord[i])
-       
-        randNumList.append(randNumber)
-        randNumber +=1 
-    print(randNumList)
+    wordToSolveAsList(wordToSolve, randNumList, randNumber)
+
+    replacingAndStoringLetters(numLettersToRemove)
 
 
+    # for i in range(numLettersToRemove):
 
-    for i in range(numLettersToRemove):
-
-        letterToReplace = random.randrange(len(randNumList))
-        indexReplaced = randNumList[letterToReplace]
-
+        # letterToReplace = random.randrange(len(randNumList))
+        # indexReplaced = randNumList[letterToReplace]
    
-        missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
+        # missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
 
-        randNumList.pop(letterToReplace)
-   
+        # removeLetterFromDict(randNumList, letterToReplace)
 
-        wordToSolve[indexReplaced] = "_"
+        # wordToSolve[indexReplaced] = "_"
 
     welcomeToGame()
     guessALetter(wordToSolve)
