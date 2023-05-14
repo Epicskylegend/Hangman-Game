@@ -12,11 +12,6 @@ class Hangman():
     wordToSolve = []
     randNumList = []
 
- 
-   
-    #print(lettersToRemove)
-
-    
 
     for i in range(len(randWord)):
         wordToSolve.append(randWord[i])
@@ -32,10 +27,8 @@ class Hangman():
         letterToReplace = random.randrange(len(randNumList))
         indexReplaced = randNumList[letterToReplace]
 
-
-        
+   
         missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
-        #print(missingCharacters)
 
         randNumList.pop(letterToReplace)
    

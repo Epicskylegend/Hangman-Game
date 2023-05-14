@@ -1,14 +1,8 @@
-
+# Function that welcomes the user to the game
 def welcomeToGame():
     print("\n")
     print("Welcome to the hangman game.")  
     print("\n") 
-
-
-#def numbLettersToRemove(subtract, randWord):
-    #  subtract = len(randWord)/2 
-    #  math.floor(subtract)
-    #  numLettersToRemove =  math.floor(subtract)
 
 
 # Function to print the word the user needs to solve
