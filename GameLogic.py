@@ -11,9 +11,9 @@ def replacingLetters(randNumList, indexReplaced):
     indexReplaced = randNumList[letterToReplace]
 
 
-def removeLetterFromDict(randNumList, letterToReplace):
-    randNumList.pop(letterToReplace)
+#def removeLetterFromDict(randNumList, letterToReplace):
    
+
 
 def replacingAndStoringLetters(numLettersToRemove):
     for i in range(numLettersToRemove):
@@ -23,6 +23,8 @@ def replacingAndStoringLetters(numLettersToRemove):
 
         missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
 
-        removeLetterFromDict(randNumList, letterToReplace)
+        randNumList.pop(letterToReplace)
 
         wordToSolve[indexReplaced] = "_"
+
+        

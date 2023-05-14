@@ -6,29 +6,14 @@ from GameLogic import *
 class Hangman():
    
     randNumber = 0
-    endResult = ""
-    #missingCharacters = {}
+    endResult = "" 
     lives = 7
-
-    #wordToSolve = []
-    #randNumList = []
 
 
     wordToSolveAsList(wordToSolve, randNumList, randNumber)
 
     replacingAndStoringLetters(numLettersToRemove)
-
-
-    # for i in range(numLettersToRemove):
-
-        # letterToReplace = random.randrange(len(randNumList))
-        # indexReplaced = randNumList[letterToReplace]
-   
-        # missingCharacters[wordToSolve[indexReplaced]] = missingCharacters.get(wordToSolve[indexReplaced], []) + [indexReplaced] # List of values inside dictionary
-
-        # removeLetterFromDict(randNumList, letterToReplace)
-
-        # wordToSolve[indexReplaced] = "_"
+    
 
     welcomeToGame()
     guessALetter(wordToSolve)
