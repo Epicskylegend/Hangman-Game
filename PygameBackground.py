@@ -3,6 +3,7 @@ from pygame.locals import *
 
 pygame.init()
 
+
 backgroundWidth = 1920
 backgroundHeight = 1080
 
@@ -19,7 +20,6 @@ window.blit(backgroundImg, (0,0))
 pygame.display.flip()
 
 
+
 def displayBackground():  
     window.blit(backgroundImg, (0,0))   
-
-   

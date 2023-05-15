@@ -1,6 +1,17 @@
+import pygame
+pygame.init()
+
+# font = pygame.font.Font("times new roman.ttf", 32)
+# text = font.render('Welcome to the hangman game.', True)
+# text.blit(text)
+
+
 # Function that welcomes the user to the game
-def welcomeToGame():
-    print("\n")
+def welcomeToGame(green):
+    # pygame.font.Font("times new roman.ttf", 32)
+    # font.render('Welcome to the hangman game.', True)
+    # text.blit(text)
+    # print("\n")
     print("Welcome to the hangman game.")  
     print("\n") 
 

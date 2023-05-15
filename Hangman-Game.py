@@ -4,6 +4,7 @@ from RandWordGenerator import *
 from GameLogic import *
 from PygameBackground import *
 from PygamePole import *
+from PygameColors import *
 
 class Hangman():
    
@@ -15,7 +16,7 @@ class Hangman():
     replacingAndStoringLetters(numLettersToRemove)
     
 
-    welcomeToGame()
+    welcomeToGame(green)
     guessALetter(wordToSolve)
    
    
@@ -24,6 +25,7 @@ class Hangman():
        
         displayBackground()
         displayPole()
+        
 
        
         validLetter = input("The letter you guess is: ")  
