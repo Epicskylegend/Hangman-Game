@@ -10,7 +10,9 @@ def displayWordToSolve(wordToSolve):
     print("The word currently looks like:")
     print(wordToSolve)
     print("\n")
+    
 
+# Function that prints a new line
 def newLine():
     print("\n")
 

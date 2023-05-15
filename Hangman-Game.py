@@ -1,4 +1,3 @@
-import re
 from InputOutput import *
 from RandWordGenerator import *
 from GameLogic import *
