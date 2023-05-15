@@ -2,7 +2,8 @@ import pygame
 from InputOutput import *
 from RandWordGenerator import *
 from GameLogic import *
-from Pygame import *
+from PygameBackground import *
+from PygamePole import *
 
 class Hangman():
    
@@ -22,7 +23,8 @@ class Hangman():
        
        
         displayBackground()
-        
+        #displayPole()
+
        
         validLetter = input("The letter you guess is: ")  
        
