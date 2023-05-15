@@ -1,20 +1,17 @@
 import random
-#from RandWordGenerator import numLettersToRemove
 
 missingCharacters = {}
 wordToSolve = []
 randNumList = []
 
 
-def replacingLetters(randNumList, indexReplaced):
-    letterToReplace = random.randrange(len(randNumList))
-    indexReplaced = randNumList[letterToReplace]
-
-
-#def removeLetterFromDict(randNumList, letterToReplace):
+# Function for replacing missing letters when user guess correct letter(s)
+def replaceMissingCharacters(missingCharacters, validLetter):
+    for i in (missingCharacters[validLetter]):    
+        wordToSolve[i] = validLetter
    
 
-
+# Function that replacing random indices from the word to solve with underscores and adds them to a dictionary of lists
 def replacingAndStoringLetters(numLettersToRemove):
     for i in range(numLettersToRemove):
 
@@ -25,6 +22,4 @@ def replacingAndStoringLetters(numLettersToRemove):
 
         randNumList.pop(letterToReplace)
 
-        wordToSolve[indexReplaced] = "_"
-
-        
+        wordToSolve[indexReplaced] = "_"     

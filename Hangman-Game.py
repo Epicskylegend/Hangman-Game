@@ -27,27 +27,25 @@ class Hangman():
         if validLetter.isalpha and len(validLetter) == 1:
            print("\n")
      
-
         elif validLetter.isalpha() and len(validLetter) > 1:
             invalidMultipleLetters()
+
+
 
         if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
             oneLetterMissing(validLetter)
 
 
-            for i in (missingCharacters[validLetter]):    
-                wordToSolve[i] = validLetter
+            replaceMissingCharacters(missingCharacters, validLetter)
 
             missingCharacters.pop(validLetter)
+
            
-
-
         elif validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) > 1:
             
             multipleLettersMissing(validLetter, missingCharacters)
 
-            for i in (missingCharacters[validLetter]):
-                wordToSolve[i] = validLetter   
+            replaceMissingCharacters(missingCharacters, validLetter)
 
             missingCharacters.pop(validLetter)
     
@@ -61,6 +59,7 @@ class Hangman():
             lives -=1
 
         displayWordToSolve(wordToSolve)
+        
             
         if lives >= 1:
             remainingLives(lives)

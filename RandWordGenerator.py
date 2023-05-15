@@ -10,7 +10,7 @@ math.floor(subtract)
 
 numLettersToRemove =  math.floor(subtract)
 
-
+# Function that turns displays the word that needs to be solved as a list
 def wordToSolveAsList(wordToSolve, randNumList, randNumber):
  for i in range(len(randWord)):
     wordToSolve.append(randWord[i])
