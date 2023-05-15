@@ -24,6 +24,8 @@ def replacingAndStoringLetters(numLettersToRemove):
 
         wordToSolve[indexReplaced] = "_"     
 
+        
+# Function that removes letters from dictionary once they've been guessed
 def removeLetterFromDict(validLetter):
     missingCharacters.pop(validLetter)
     
