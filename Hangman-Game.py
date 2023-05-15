@@ -11,7 +11,6 @@ class Hangman():
 
 
     wordToSolveAsList(wordToSolve, randNumList, randNumber)
-
     replacingAndStoringLetters(numLettersToRemove)
     
 
@@ -25,7 +24,7 @@ class Hangman():
         validLetter = input("The letter you guess is: ")  
        
         if validLetter.isalpha and len(validLetter) == 1:
-           print("\n")
+           newLine()
      
         elif validLetter.isalpha() and len(validLetter) > 1:
             invalidMultipleLetters()
@@ -59,7 +58,7 @@ class Hangman():
             lives -=1
 
         displayWordToSolve(wordToSolve)
-        
+
             
         if lives >= 1:
             remainingLives(lives)

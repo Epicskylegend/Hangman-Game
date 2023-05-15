@@ -11,6 +11,9 @@ def displayWordToSolve(wordToSolve):
     print(wordToSolve)
     print("\n")
 
+def newLine():
+    print("\n")
+
 
 # Function that prompts user to guess a word
 def guessALetter(wordToSolve):
