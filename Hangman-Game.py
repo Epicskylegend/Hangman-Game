@@ -49,7 +49,7 @@ class Hangman():
     
            
         elif not validLetter.isalpha():
-            invalidNumber(validLetter)
+           invalidInputNotLetter(validLetter)
    
 
         elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
