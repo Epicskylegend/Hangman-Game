@@ -45,8 +45,7 @@ class Hangman():
 
             replaceMissingCharacters(missingCharacters, validLetter)
 
-            missingCharacters.pop(validLetter)
-    
+            removeLetterFromDict(validLetter)
            
         elif not validLetter.isalpha():
            invalidInputNotLetter(validLetter)

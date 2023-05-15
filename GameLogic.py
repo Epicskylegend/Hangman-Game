@@ -23,3 +23,7 @@ def replacingAndStoringLetters(numLettersToRemove):
         randNumList.pop(letterToReplace)
 
         wordToSolve[indexReplaced] = "_"     
+
+def removeLetterFromDict(validLetter):
+    missingCharacters.pop(validLetter)
+    
