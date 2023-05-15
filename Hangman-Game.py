@@ -1,3 +1,4 @@
+import pygame
 from InputOutput import *
 from RandWordGenerator import *
 from GameLogic import *
@@ -7,7 +8,6 @@ class Hangman():
     randNumber = 0
     endResult = "" 
     lives = 7
-
 
     wordToSolveAsList(wordToSolve, randNumList, randNumber)
     replacingAndStoringLetters(numLettersToRemove)
