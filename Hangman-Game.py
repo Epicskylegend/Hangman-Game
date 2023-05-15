@@ -23,7 +23,7 @@ class Hangman():
        
        
         displayBackground()
-        #displayPole()
+        displayPole()
 
        
         validLetter = input("The letter you guess is: ")  

@@ -9,7 +9,7 @@ backgroundHeight = 1080
 
 window = pygame.display.set_mode((backgroundWidth, backgroundHeight))
 
-backgroundImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Images\\Nature.jpg').convert()
+backgroundImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Images\\Nature.jpg')
 pygame.display.set_caption('Hangman Game')
 backgroundImg = pygame.transform.scale(backgroundImg,(backgroundWidth, backgroundHeight))
 
@@ -17,7 +17,6 @@ backgroundImg = pygame.transform.scale(backgroundImg,(backgroundWidth, backgroun
 window.blit(backgroundImg, (0,0))   
 
 pygame.display.flip()
-status = True
 
 
 def displayBackground():  
