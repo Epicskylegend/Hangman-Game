@@ -1,28 +1,75 @@
 import pygame
 from pygame.locals import *
 
-pygame.init()
-
-
-backgroundWidth = 1920
-backgroundHeight = 1080
-
-text_font = pygame.font.SysFont(None, 100, bold = True)
+class Game:
+    def __init__(self, backgroundWidth, backgroundHeight):
+       
+        pygame.init()
 
 
 
-window = pygame.display.set_mode((backgroundWidth, backgroundHeight))
+        self.backgroundWidth = backgroundWidth
+        self.backgroundHeight = backgroundHeight
+        self.textX = 0
+        self.textY = 0
 
-backgroundImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Images\\chalkboard.jpg')
-pygame.display.set_caption('Hangman Game')
-backgroundImg = pygame.transform.scale(backgroundImg,(backgroundWidth, backgroundHeight))
-
-
-window.blit(backgroundImg, (0,0))   
-
-pygame.display.flip()
+        self.text_font = pygame.font.SysFont(None, 100, bold = True)
+        self.clock = pygame.time.Clock()
 
 
-def drawText(text, font, textColor, x, y):
-    welcome = font.render(text, True, textColor)
-    window.blit(welcome, (x, y))
+
+        self.window = pygame.display.set_mode((backgroundWidth, backgroundHeight))
+
+        
+        pygame.display.set_caption('Hangman Game')
+      
+       
+
+        #pygame.display.flip()
+
+
+    def drawText(self, text,textColor, x, y):
+        welcome = self.text_font.render(text, True, textColor)
+        self.window.blit(welcome, (x, y))
+       
+
+    def quitGame(self):
+        pygame.quit()
+
+    def draw(self):
+        self.window.fill(0)
+        self.drawBackground()
+        self.drawText("Welcome to game.",(255,255,255), self.textX, self.textY) 
+        pygame.display.flip()
+
+
+    def drawBackground(self):
+        backgroundImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Images\\chalkboard.jpg')
+        backgroundImg = pygame.transform.scale(backgroundImg,(self.backgroundWidth, self.backgroundHeight))
+        self.window.blit(backgroundImg, (0,0)) 
+
+        
+
+    def update(self):
+        self.deltaTime = 0.01 * self.clock.tick()
+        self.textX  += 8 * self.deltaTime
+        self.textY += 8 * self.deltaTime
+        
+
+
+    def hasQuit(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return True
+        return False
+                
+ 
+
+game = Game(1920, 1080)
+
+
+while not game.hasQuit():
+    game.draw()
+    game.update()
+    print("hi")
+
