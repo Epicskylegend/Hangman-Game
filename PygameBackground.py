@@ -1,31 +1,27 @@
 import pygame
 from pygame.locals import *
+from PygamePole import *
+from HangmanGame import *
 
 class Game:
     def __init__(self, backgroundWidth, backgroundHeight):
        
         pygame.init()
 
-
-
         self.backgroundWidth = backgroundWidth
         self.backgroundHeight = backgroundHeight
         self.textX = 0
         self.textY = 0
 
-        self.text_font = pygame.font.SysFont(None, 100, bold = True)
+        self.text_font = pygame.font.SysFont(None, 100)
         self.clock = pygame.time.Clock()
 
 
-
         self.window = pygame.display.set_mode((backgroundWidth, backgroundHeight))
-
-        
-        pygame.display.set_caption('Hangman Game')
       
+        pygame.display.set_caption('Hangman Game')    
        
-
-        #pygame.display.flip()
+        pygame.display.flip()
 
 
     def drawText(self, text,textColor, x, y):
@@ -39,7 +35,8 @@ class Game:
     def draw(self):
         self.window.fill(0)
         self.drawBackground()
-        self.drawText("Welcome to game.",(255,255,255), self.textX, self.textY) 
+        self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
+        game.drawText("Lives" ,(255,255,255), 1700, 10)
         pygame.display.flip()
 
 
@@ -68,8 +65,11 @@ class Game:
 game = Game(1920, 1080)
 
 
+
 while not game.hasQuit():
     game.draw()
+    game.drawText("Lives" ,(255,255,255), 500, 500)
     game.update()
-    print("hi")
+    print("loop")
+    #drawPole(poleWidth, poleHeight)
 

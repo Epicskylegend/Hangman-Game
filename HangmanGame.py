@@ -4,10 +4,8 @@ from RandWordGenerator import *
 from GameLogic import *
 from PygameBackground import *
 from PygamePole import *
-from PygameColors import *
 
-game = Game(1920, 1080)
-
+#game = Game(1920, 1080)
 
    
 randNumber = 0
@@ -18,7 +16,7 @@ wordToSolveAsList(wordToSolve, randNumList, randNumber)
 replacingAndStoringLetters(numLettersToRemove)
 
 
-welcomeToGame(green)
+welcomeToGame()
 
 guessALetter(wordToSolve)
 

@@ -1,6 +1,6 @@
 
 # Function that welcomes the user to the game
-def welcomeToGame(green):
+def welcomeToGame():
     print("\n")
     print("Welcome to the hangman game.")  
     print("\n") 
