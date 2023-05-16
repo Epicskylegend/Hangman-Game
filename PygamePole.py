@@ -1,19 +1,19 @@
-import pygame
-from pygame.locals import *
+# import pygame
+# from pygame.locals import *
 
-poleWidth = 500
-poleHeight = 500
+# poleWidth = 500
+# poleHeight = 500
 
 
 
-pole =  pygame.display.set_mode((poleWidth, poleHeight))
+# pole =  pygame.display.set_mode((poleWidth, poleHeight))
 
-poleImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Pictures\\Pole.png')
-poleImg = pygame.transform.scale(poleImg, (poleWidth, poleHeight))
+# poleImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Pictures\\Pole.png')
+# poleImg = pygame.transform.scale(poleImg, (poleWidth, poleHeight))
 
-pole.blit(poleImg, (35,200))
-pygame.display.flip()
+# pole.blit(poleImg, (35,200))
+# pygame.display.flip()
 
-def displayPole():
-    pole.blit(poleImg, (35,200))
+# def displayPole():
+#     pole.blit(poleImg, (35,200))
 

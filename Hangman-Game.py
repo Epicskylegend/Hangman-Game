@@ -23,11 +23,6 @@ class Hangman():
     while endResult != randWord:   
        
        
-        displayBackground()
-        displayPole()
-        
-
-       
         validLetter = input("The letter you guess is: ")  
        
         if validLetter.isalpha and len(validLetter) == 1:
@@ -66,8 +61,12 @@ class Hangman():
         displayWordToSolve(wordToSolve)
 
             
-        if lives >= 1:
+        if lives > 1:
             remainingLives(lives)
+            
+        elif lives == 1:
+            oneLifeLeft()
+            
 
 
         if missingCharacters == {}:

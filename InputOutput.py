@@ -1,17 +1,8 @@
 import pygame
-pygame.init()
-
-# font = pygame.font.Font("times new roman.ttf", 32)
-# text = font.render('Welcome to the hangman game.', True)
-# text.blit(text)
-
 
 # Function that welcomes the user to the game
 def welcomeToGame(green):
-    # pygame.font.Font("times new roman.ttf", 32)
-    # font.render('Welcome to the hangman game.', True)
-    # text.blit(text)
-    # print("\n")
+    print("\n")
     print("Welcome to the hangman game.")  
     print("\n") 
 
@@ -62,6 +53,10 @@ def wrongLetter(validLetter):
 # Function called to display the leftover lives of the user
 def remainingLives(lives):
         print("You currently have " + str(lives) + " lives remaining.\n")
+
+def oneLifeLeft():
+     print("You current have 1 life remaining.")
+     print("\n")
 
 
 # Function that is called if the user solves the word
