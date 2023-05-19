@@ -1,4 +1,3 @@
-
 # Function that welcomes the user to the game
 def welcomeToGame():
     print("\n")
