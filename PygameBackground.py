@@ -5,7 +5,7 @@ from PygamePole import *
 import time
 
 class Game:
-    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, lives):
+    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodywidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
      
         self.hangmanGame = Hangman()
 
@@ -23,8 +23,20 @@ class Game:
         self.poleWidth = poleWidth
         self.poleHeight = poleHeight
 
+
+
+
         self.headWidth = headWidth
         self.headHeight = headHeight
+
+        self.bodyWidth = bodywidth
+        self.bodyHeight = bodyHeight
+
+        self.legWidth = legWidth
+        self.legHeight = legHeight
+
+        self.armWidth = armWidth
+        self.armHeight = armHeight
           
         
         self.text_font = pygame.font.Font("C:\\Users\\adeba\\OneDrive\\Hangman\\Fonts\\EraserRegular-DO1D.ttf", 80)
@@ -85,7 +97,7 @@ class Game:
         self.window.blit(backgroundImg, (0,0)) 
 
     def drawPole(self):
-        poleImg = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
+        poleImg = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Pole.png')
         poleImg = pygame.transform.scale(poleImg, (self.poleWidth, self.poleHeight))
         self.window.blit(poleImg, (-75,-100))
 
@@ -94,6 +106,12 @@ class Game:
     def drawHangman(self):
         if self.lives <= 6:
             hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Head.png')
+            hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
+            self.window.blit(hangmanHead, (200,200))
+
+
+        if self.lives <= 5:
+            hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_body.png')
             hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
             self.window.blit(hangmanHead, (200,200))
 
@@ -151,7 +169,7 @@ class Game:
                 
  
 
-game = Game(1920, 1080, 940, 1080, 1000, 1000, 7)
+game = Game(1920, 1080, 940, 1080, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 7)
 randNumber = 0
 # lives = 7
 secondsElasped = 0
@@ -164,5 +182,3 @@ displayWordToSolve(wordToSolve)
 while not game.hasQuit():
     game.draw()
     game.update()
-    
-  
