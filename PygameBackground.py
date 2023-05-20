@@ -115,20 +115,22 @@ class Game:
         self.textX  += 8 * self.deltaTime
         self.textY += 8 * self.deltaTime
         self.hangmanGame.update()
-        self.removeGuessedLetters
-        
+        #self.removeGuessedLetters 
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys():
+            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
                 self.lives -=1
+                alphabet.remove(pygame.key.name(event.key))
                 print(self.lives)
+           
 
-            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) and pygame.key.name(event.key) in alphabet:
-                 alphabet.remove(pygame.key.name(event.key))
+                
 
-            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys():
+            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
                 for i in (missingCharacters[pygame.key.name(event.key)]):    
                     wordToSolve[i] =  pygame.key.name(event.key)
                     missingCharacters.pop( pygame.key.name(event.key))
+              
+                    alphabet.remove(pygame.key.name(event.key))
         # if self.lives == 0 or missingCharacters == {}:       
         #     pygame.quit()
 
