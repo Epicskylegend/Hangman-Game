@@ -128,9 +128,9 @@ class Game:
             elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
                 for i in (missingCharacters[pygame.key.name(event.key)]):    
                     wordToSolve[i] =  pygame.key.name(event.key)
-                    missingCharacters.pop( pygame.key.name(event.key))
+                missingCharacters.pop( pygame.key.name(event.key))
               
-                    alphabet.remove(pygame.key.name(event.key))
+                alphabet.remove(pygame.key.name(event.key))
         # if self.lives == 0 or missingCharacters == {}:       
         #     pygame.quit()
 
