@@ -5,7 +5,7 @@ from PygamePole import *
 import time
 
 class Game:
-    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodywidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
+    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodyWidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
      
         self.hangmanGame = Hangman()
 
@@ -29,7 +29,7 @@ class Game:
         self.headWidth = headWidth
         self.headHeight = headHeight
 
-        self.bodyWidth = bodywidth
+        self.bodyWidth = bodyWidth
         self.bodyHeight = bodyHeight
 
         self.legWidth = legWidth
@@ -63,7 +63,7 @@ class Game:
         self.drawBackground()
         self.drawPole()
         self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
-        self.drawText("".join(wordToSolve),(255,255,255), 700, 720)
+        self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
         self.drawText("".join(alphabet), (255,255,255), 200, 900)
@@ -104,16 +104,47 @@ class Game:
     
 
     def drawHangman(self):
-        if self.lives <= 6:
+        if self.lives <= 5:
             hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Head.png')
             hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
-            self.window.blit(hangmanHead, (200,200))
+            self.window.blit(hangmanHead, (260,-15))
 
 
-        if self.lives <= 5:
-            hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_body.png')
-            hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
-            self.window.blit(hangmanHead, (200,200))
+        if self.lives <= 4:
+            hangmanBody = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Body.png')
+            hangmanBody = pygame.transform.scale(hangmanBody, (self.bodyWidth, self.bodyHeight))
+            self.window.blit(hangmanBody, (105,250))
+
+        if self.lives <= 3:
+            hangmanArm1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm.png')
+            hangmanArm1 = pygame.transform.scale(hangmanArm1, (self.armWidth, self.armHeight))
+            self.window.blit(hangmanArm1, (260,-30))
+
+        if self.lives <= 2:
+            hangmanArm2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm2.png')
+            hangmanArm2 = pygame.transform.scale(hangmanArm2, (self.armWidth, self.armHeight))
+            self.window.blit(hangmanArm2, (60,-30))
+
+        if self.lives <= 1:
+            hangmanLeg1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg.png')
+            hangmanLeg1 = pygame.transform.scale(hangmanLeg1, (self.legWidth, self.legHeight))
+            self.window.blit(hangmanLeg1, (185,365))
+
+
+        if self.lives <= 0:
+            hangmanLeg2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg2.png')
+            hangmanLeg2 = pygame.transform.scale(hangmanLeg2, (self.legWidth, self.legHeight))
+            self.window.blit(hangmanLeg2, (140,365))
+
+
+            
+
+
+
+
+
+
+
 
     def drawList(self, li, textColor, x, y):
         "".join(li)
@@ -133,7 +164,6 @@ class Game:
         self.textX  += 8 * self.deltaTime
         self.textY += 8 * self.deltaTime
         self.hangmanGame.update()
-        #self.removeGuessedLetters 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
                 self.lives -=1
@@ -169,7 +199,7 @@ class Game:
                 
  
 
-game = Game(1920, 1080, 940, 1080, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 7)
+game = Game(1920, 1080, 940, 1080, 800, 800, 1100, 500, 1000, 500, 1000, 1000, 6)
 randNumber = 0
 # lives = 7
 secondsElasped = 0
