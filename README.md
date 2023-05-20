@@ -5,4 +5,5 @@
 
 
 
-![Hangman](https://github.com/Epicskylegend/Hangman-Game/assets/85533331/c2d6529f-a1eb-4f4d-acd9-77248676027c)
+
+![Hangman](https://github.com/Epicskylegend/Hangman-Game/assets/85533331/5176f67c-4cb1-4a49-aefb-b1cb68bb7ab9)
