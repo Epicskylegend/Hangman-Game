@@ -4,8 +4,8 @@ from HangmanGame import *
 from PygamePole import *
 
 class Game:
-    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight):
-          
+    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight):
+     
         self.hangmanGame = Hangman()
 
         pygame.init()
@@ -14,11 +14,13 @@ class Game:
         self.backgroundHeight = backgroundHeight
         self.textX = 0
         self.textY = 0
-        
 
-      
         self.poleWidth = poleWidth
         self.poleHeight = poleHeight
+
+        self.headWidth = headWidth
+        self.headHeight = headHeight
+          
         
         self.text_font = pygame.font.SysFont(None, 100)
         self.clock = pygame.time.Clock()
@@ -49,27 +51,20 @@ class Game:
         self.drawText("Seconds Elapsed: " + str(secondsElasped) ,(255,255,255), 750, 90)
         pygame.display.flip()
 
-    def userInput(self):
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                print("Key pressed")
-                print(pygame.key.name(event.key))
                
 
     def validInput(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 userInput = pygame.key.name(event.key)
-    
+
                 if userInput in missingCharacters.keys():
                     print("yes")
                     for i in (missingCharacters[userInput]):    
                         wordToSolve[i] = userInput
                         missingCharacters.pop(userInput)
-                else:
-                    print("No")
-                    #lives -=1
-       
+                
+        
 
 
     def drawBackground(self):
@@ -82,6 +77,14 @@ class Game:
         poleImg = pygame.transform.scale(poleImg, (self.poleWidth, self.poleHeight))
         self.window.blit(poleImg, (-75,-100))
 
+    
+    def drawHead(self): 
+        hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Head.png')
+        hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
+        self.window.blit(hangmanHead, (-15,-100))
+    
+
+
         
 
     def update(self):
@@ -89,6 +92,7 @@ class Game:
         self.textX  += 8 * self.deltaTime
         self.textY += 8 * self.deltaTime
         self.hangmanGame.update()
+        #self.drawHead(lives)
         
 
 
@@ -100,11 +104,12 @@ class Game:
                 
  
 
-game = Game(1920, 1080, 1000, 1080)
+game = Game(1920, 1080, 1000, 1080, 10, 10)
 
 randNumber = 0
 lives = 7
 secondsElasped = 0
+
 
 wordToSolveAsList(wordToSolve, randNumList, randNumber)
 replacingAndStoringLetters(numLettersToRemove)
@@ -113,7 +118,28 @@ displayWordToSolve(wordToSolve)
 while not game.hasQuit():
     game.draw()
     game.update()
-    #game.userInput()
-    game.validInput()
+    game.drawHead
+    if lives <= 6:
+        game.drawHead()
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys():
+            lives -=1
+            print(lives)
+        elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys():
+            for i in (missingCharacters[pygame.key.name(event.key)]):    
+                wordToSolve[i] =  pygame.key.name(event.key)
+                missingCharacters.pop( pygame.key.name(event.key))
+
+    
+    if lives == 0 or missingCharacters == {}:       
+        pygame.quit()
+       
+        
+           
+    
     #displayWordToSolve(wordToSolve)
+    # if  missingCharacters == {}:
+    #     SystemExit
   
