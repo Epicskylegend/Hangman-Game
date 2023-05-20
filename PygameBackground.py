@@ -62,11 +62,11 @@ class Game:
         self.window.fill(0)
         self.drawBackground()
         self.drawPole()
-        self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
+        #self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
         self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
-        self.drawText("".join(alphabet), (255,255,255), 200, 900)
+        self.drawText("".join(alphabet), (255,255,255), 230, 900)
         self.drawHangman()
         # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
         # hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
@@ -165,7 +165,7 @@ class Game:
         self.textY += 8 * self.deltaTime
         self.hangmanGame.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
+            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
                 print(self.lives)
@@ -173,7 +173,7 @@ class Game:
 
                 
 
-            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet:
+            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
                 for i in (missingCharacters[pygame.key.name(event.key)]):    
                     wordToSolve[i] =  pygame.key.name(event.key)
                 missingCharacters.pop( pygame.key.name(event.key))
