@@ -53,7 +53,7 @@ class Game:
         self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
         self.drawText("".join(wordToSolve),(255,255,255), 700, 920)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
-        self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 750, 90)
+        self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
         self.drawHangman()
         # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
         # hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
@@ -108,12 +108,6 @@ class Game:
     #     self.startTIme = time.time()
         
         
-        
-        
-
-
-
-        
 
     def update(self):
         self.deltaTime = 0.01 * self.clock.tick()
@@ -143,8 +137,7 @@ class Game:
                 
  
 
-game = Game(1920, 1080, 1000, 1080, 1000, 1000, 7)
-
+game = Game(1920, 1080, 940, 1080, 1000, 1000, 7)
 randNumber = 0
 # lives = 7
 secondsElasped = 0
