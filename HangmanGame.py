@@ -3,6 +3,7 @@ from pygame.locals import *
 from HangmanLogic import *
 import time
 from Clock import Clock
+from gameSounds import Sounds
 from gameSounds import *
 
 class Game:
@@ -12,6 +13,10 @@ class Game:
         self.gameTimer = Clock()
         self.exitTimer = Clock()
         self.isGameOver = False
+        
+        self.playGameSounds = Sounds()
+
+    
 
         pygame.init()
         pygame.mixer.init()
@@ -182,8 +187,9 @@ class Game:
                 
 
             elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
-                pygame.mixer.Sound.play(correctLetter)
-                for i in (missingCharacters[pygame.key.name(event.key)]):    
+                
+                for i in (missingCharacters[pygame.key.name(event.key)]):
+                    self.playGameSounds.chalkDrawingSound()
                     wordToSolve[i] =  pygame.key.name(event.key)
                 missingCharacters.pop( pygame.key.name(event.key))
               
