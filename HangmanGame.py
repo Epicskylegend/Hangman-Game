@@ -65,13 +65,14 @@ class Game:
         if missingCharacters != {} and self.lives != 0:
             self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
         elif missingCharacters == {}:
-            self.drawText("You solved the word " + '"' + ("".join(wordToSolve) + '"') , (255,255,255), 350, 650)
+            self.drawText("You solved the word " + '"', (255,255,255), 550, 800)
+            self.drawText(("".join(wordToSolve) + '"'), (255,255,255), 800, 900)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
         if self.lives == 0:
             self.drawText("The word you tried to solve was: " , (255,255,255), 300, 800)
             self.drawText('"' + ("".join(randWord) + '"'), (255,255,255), 800, 900)
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
-        if self.lives > 0:
+        if self.lives > 0 and missingCharacters != {}:
             self.drawText("".join(alphabet), (255,255,255), 230, 900)
         self.drawHangman()
         # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
