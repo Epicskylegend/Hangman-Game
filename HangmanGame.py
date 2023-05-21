@@ -82,7 +82,7 @@ class Game:
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
 
         if self.lives > 0 and missingCharacters != {}:
-            self.drawText("".join(alphabet), (255,255,255), 230, 900)
+            self.drawText("".join(alphabet), (255,255,255), 330, 900)
 
 
         self.drawHangman()
@@ -119,34 +119,34 @@ class Game:
         if self.lives <= 5:
             hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Head.png')
             hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
-            self.window.blit(hangmanHead, (260,-15))
+            self.window.blit(hangmanHead, (270,-15))
 
 
         if self.lives <= 4:
             hangmanBody = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Body.png')
             hangmanBody = pygame.transform.scale(hangmanBody, (self.bodyWidth, self.bodyHeight))
-            self.window.blit(hangmanBody, (105,250))
+            self.window.blit(hangmanBody, (115,250))
 
         if self.lives <= 3:
             hangmanArm1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm.png')
             hangmanArm1 = pygame.transform.scale(hangmanArm1, (self.armWidth, self.armHeight))
-            self.window.blit(hangmanArm1, (260,-30))
+            self.window.blit(hangmanArm1, (270,-30))
 
         if self.lives <= 2:
             hangmanArm2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm2.png')
             hangmanArm2 = pygame.transform.scale(hangmanArm2, (self.armWidth, self.armHeight))
-            self.window.blit(hangmanArm2, (60,-30))
+            self.window.blit(hangmanArm2, (70,-30))
 
         if self.lives <= 1:
             hangmanLeg1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg.png')
             hangmanLeg1 = pygame.transform.scale(hangmanLeg1, (self.legWidth, self.legHeight))
-            self.window.blit(hangmanLeg1, (185,365))
+            self.window.blit(hangmanLeg1, (195,365))
 
 
         if self.lives <= 0:
             hangmanLeg2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg2.png')
             hangmanLeg2 = pygame.transform.scale(hangmanLeg2, (self.legWidth, self.legHeight))
-            self.window.blit(hangmanLeg2, (140,365))
+            self.window.blit(hangmanLeg2, (150,365))
 
 
     def drawList(self, li, textColor, x, y):
