@@ -2,17 +2,21 @@ import pygame
 from pygame.locals import *
 from HangmanLogic import *
 import time
+from Clock import Clock
 
 class Game:
     def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodyWidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
      
         self.hangmanGame = Hangman()
+        self.gameTimer = Clock()
+        self.exitTimer = Clock()
+        self.isGameOver = False
 
         pygame.init()
 
         self.lives = lives
         self.startTIme = time.time()
-       
+
 
         self.backgroundWidth = backgroundWidth
         self.backgroundHeight = backgroundHeight
@@ -64,22 +68,24 @@ class Game:
         #self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
         if missingCharacters != {} and self.lives != 0:
             self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
+
         elif missingCharacters == {}:
             self.drawText("You solved the word ", (255,255,255), 550, 800)
             self.drawText('"' + ("".join(wordToSolve) + '"'), (255,255,255), 800, 900)
+
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
+
         if self.lives == 0:
             self.drawText("The word you tried to solve was: " , (255,255,255), 300, 800)
             self.drawText('"' + ("".join(randWord) + '"'), (255,255,255), 800, 900)
+
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
+
         if self.lives > 0 and missingCharacters != {}:
             self.drawText("".join(alphabet), (255,255,255), 230, 900)
-        self.drawHangman()
-        # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
-        # hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
-        # self.window.blit(hangmanHead, (100,100))
-        
 
+
+        self.drawHangman()
         pygame.display.flip()
        
                
@@ -149,7 +155,7 @@ class Game:
 
     def getTimeElapsed(self):
         if self.lives > 0 and missingCharacters != {}:
-            return int(time.time() - self.startTIme)
+            return self.gameTimer.getTimeElasped()
         else:
             return 0
 
@@ -168,9 +174,8 @@ class Game:
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
                 print(self.lives)
-        
+      
 
-           
 
                 
 
@@ -180,8 +185,11 @@ class Game:
                 missingCharacters.pop( pygame.key.name(event.key))
               
                 alphabet.remove(pygame.key.name(event.key))
-        # if self.lives == 0 or missingCharacters == {}:       
-        #     pygame.quit()
+
+        if self.lives == 0 or missingCharacters == {}:
+            self.gameOver()
+          
+       
 
 
     def removeGuessedLetters(self):
@@ -190,6 +198,16 @@ class Game:
                 alphabet[pygame.key.name(event.key)] 
                 #alphabet.remove(pygame.key.name(event.key))
                 print(alphabet)
+
+    def gameOver(self):
+        if not self.isGameOver:
+            self.exitTimer.reset()
+            self.isGameOver = True
+            return
+        if self.exitTimer.getTimeElasped() >= 5:
+            pygame.quit()
+
+
         
 
 
@@ -205,7 +223,6 @@ game = Game(1920, 1080, 940, 1080, 800, 800, 1100, 500, 1000, 500, 1000, 1000, 6
 randNumber = 0
 # lives = 7
 secondsElasped = 0
-
 
 
 wordToSolveAsList(wordToSolve, randNumList, randNumber)
