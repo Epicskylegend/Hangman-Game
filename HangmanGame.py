@@ -178,6 +178,7 @@ class Game:
         self.hangmanGame.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
+                self.playGameSounds.lostLifeSound()
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
                 print(self.lives)
