@@ -6,9 +6,9 @@ words = ["pizza", "flower", "cherry", "finished", "persuaded"] # Word to solve
 randWord = random.choice(words) # Random word selected from words list
 
 subtract = len(randWord)/2 
-math.floor(subtract)
+math.ceil(subtract)
 
-numLettersToRemove =  math.floor(subtract)
+numLettersToRemove =  math.ceil(subtract)
 
 # Function that turns the word that needs to be solved into a list
 def wordToSolveAsList(wordToSolve, randNumList, randNumber):

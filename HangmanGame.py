@@ -1,89 +1,209 @@
 import pygame
-from InputOutput import *
-from RandWordGenerator import *
-from GameLogic import *
-from PygamePole import *
+from pygame.locals import *
+from HangmanLogic import *
+import time
 
-alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+class Game:
+    def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodyWidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
+     
+        self.hangmanGame = Hangman()
 
-class Hangman:
+        pygame.init()
 
-   
-           
+        self.lives = lives
+        self.startTIme = time.time()
+       
+
+        self.backgroundWidth = backgroundWidth
+        self.backgroundHeight = backgroundHeight
+        self.textX = 0
+        self.textY = 0
+
+        self.poleWidth = poleWidth
+        self.poleHeight = poleHeight
 
 
- 
-#game = Game(1920, 1080)
+
+
+        self.headWidth = headWidth
+        self.headHeight = headHeight
+
+        self.bodyWidth = bodyWidth
+        self.bodyHeight = bodyHeight
+
+        self.legWidth = legWidth
+        self.legHeight = legHeight
+
+        self.armWidth = armWidth
+        self.armHeight = armHeight
+          
+        
+        self.text_font = pygame.font.Font("C:\\Users\\adeba\\OneDrive\\Hangman\\Fonts\\EraserRegular-DO1D.ttf", 80)
+        self.clock = pygame.time.Clock()
+
+
+        self.window = pygame.display.set_mode((backgroundWidth, backgroundHeight))
+      
+        pygame.display.set_caption('Hangman Game')    
+       
+        pygame.display.flip()
+
+
+    def drawText(self, text,textColor, x, y):
+        welcome = self.text_font.render(text, True, textColor)
+        self.window.blit(welcome, (x, y))
+       
+
+    def quitGame(self):
+        pygame.quit()
+
+    def draw(self):
+        self.window.fill(0)
+        self.drawBackground()
+        self.drawPole()
+        #self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
+        if missingCharacters != {}:
+            self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
+        else:
+            self.drawText("You solved the word " + "".join(wordToSolve) + " congratulations!", (255,255,255), 500, 750)
+        self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
+        self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
+        self.drawText("".join(alphabet), (255,255,255), 230, 900)
+        self.drawHangman()
+        # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
+        # hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
+        # self.window.blit(hangmanHead, (100,100))
+        
+
+        pygame.display.flip()
+       
+               
+
+    def validInput(self):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                userInput = pygame.key.name(event.key)
+
+                if userInput in missingCharacters.keys():
+                    print("yes")
+                    for i in (missingCharacters[userInput]):    
+                        wordToSolve[i] = userInput
+                        missingCharacters.pop(userInput)
+                    
+
+
+    def drawBackground(self):
+        backgroundImg = pygame.image.load('C:\\Users\\adeba\OneDrive\\Images\\chalkboard.jpg')
+        backgroundImg = pygame.transform.scale(backgroundImg,(self.backgroundWidth, self.backgroundHeight))
+        self.window.blit(backgroundImg, (0,0)) 
+
+    def drawPole(self):
+        poleImg = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Pole.png')
+        poleImg = pygame.transform.scale(poleImg, (self.poleWidth, self.poleHeight))
+        self.window.blit(poleImg, (-75,-100))
+
+    
+
+    def drawHangman(self):
+        if self.lives <= 5:
+            hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Head.png')
+            hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
+            self.window.blit(hangmanHead, (260,-15))
+
+
+        if self.lives <= 4:
+            hangmanBody = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Body.png')
+            hangmanBody = pygame.transform.scale(hangmanBody, (self.bodyWidth, self.bodyHeight))
+            self.window.blit(hangmanBody, (105,250))
+
+        if self.lives <= 3:
+            hangmanArm1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm.png')
+            hangmanArm1 = pygame.transform.scale(hangmanArm1, (self.armWidth, self.armHeight))
+            self.window.blit(hangmanArm1, (260,-30))
+
+        if self.lives <= 2:
+            hangmanArm2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Arm2.png')
+            hangmanArm2 = pygame.transform.scale(hangmanArm2, (self.armWidth, self.armHeight))
+            self.window.blit(hangmanArm2, (60,-30))
+
+        if self.lives <= 1:
+            hangmanLeg1 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg.png')
+            hangmanLeg1 = pygame.transform.scale(hangmanLeg1, (self.legWidth, self.legHeight))
+            self.window.blit(hangmanLeg1, (185,365))
+
+
+        if self.lives <= 0:
+            hangmanLeg2 = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Hangman_Leg2.png')
+            hangmanLeg2 = pygame.transform.scale(hangmanLeg2, (self.legWidth, self.legHeight))
+            self.window.blit(hangmanLeg2, (140,365))
+
+
+    def drawList(self, li, textColor, x, y):
+        "".join(li)
+        self.drawText("".join(li), textColor, x, y)
+
+    def getTimeElapsed(self):
+        if self.lives > 0 and missingCharacters != {}:
+            return int(time.time() - self.startTIme)
+        else:
+            return 0
+
+    # def resetTimer(self):
+    #     self.startTIme = time.time()
+        
+        
 
     def update(self):
-        pass
-        # validLetter = input("The letter you guess is: ")  
+        self.deltaTime = 0.01 * self.clock.tick()
+        self.textX  += 8 * self.deltaTime
+        self.textY += 8 * self.deltaTime
+        self.hangmanGame.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
+                self.lives -=1
+                alphabet.remove(pygame.key.name(event.key))
+                print(self.lives)
+           
+
+                
+
+            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
+                for i in (missingCharacters[pygame.key.name(event.key)]):    
+                    wordToSolve[i] =  pygame.key.name(event.key)
+                missingCharacters.pop( pygame.key.name(event.key))
+              
+                alphabet.remove(pygame.key.name(event.key))
+        # if self.lives == 0 or missingCharacters == {}:       
+        #     pygame.quit()
+
+
+    def removeGuessedLetters(self):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) and pygame.key.name(event.key) in alphabet:
+                alphabet.remove(pygame.key.name(event.key))
+                print(alphabet)
         
-        # if validLetter.isalpha() and len(validLetter) == 1:
-        #     newLine()
-        
-        # elif validLetter.isalpha() and len(validLetter) > 1:
-        #     invalidMultipleLetters()
+
+
+    def hasQuit(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return True
+        return False
+                
+ 
+
+game = Game(1920, 1080, 940, 1080, 800, 800, 1100, 500, 1000, 500, 1000, 1000, 6)
+randNumber = 0
+# lives = 7
+secondsElasped = 0
 
 
 
-        # if validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) == 1:
-        #     oneLetterMissing(validLetter)
+wordToSolveAsList(wordToSolve, randNumList, randNumber)
+replacingAndStoringLetters(numLettersToRemove)
+displayWordToSolve(wordToSolve)
 
-
-        #     replaceMissingCharacters(missingCharacters, validLetter)
-
-        #     missingCharacters.pop(validLetter)
-
-            
-        # elif validLetter in missingCharacters.keys() and len(missingCharacters[validLetter]) > 1:
-            
-        #     multipleLettersMissing(validLetter, missingCharacters)
-
-        #     replaceMissingCharacters(missingCharacters, validLetter)
-
-        #     removeLetterFromDict(validLetter)
-            
-        # elif not validLetter.isalpha():
-        #     invalidInputNotLetter(validLetter)
-
-
-        # elif validLetter.isalpha and len(validLetter) == 1 and validLetter not in missingCharacters.keys():
-        #     wrongLetter(validLetter)
-        #     lives -=1 
-
-        # displayWordToSolve(wordToSolve)
-
-            
-        # if lives > 1:
-        #     remainingLives(lives)
-            
-        # elif lives == 1:
-        #     oneLifeLeft()
-            
-
-
-        # if missingCharacters == {}:
-        #     wordSolved(randWord)
-        
-        # if lives == 0:
-        #     outOfLives(randWord)
-
-        
-        # randNumber = 0
-        # endResult = "" 
-        # lives = 7
-
-        # wordToSolveAsList(wordToSolve, randNumList, randNumber)
-        # replacingAndStoringLetters(numLettersToRemove)
-
-
-        # welcomeToGame()
-
-        # guessALetter(wordToSolve)
-
-
-    #while endResult != randWord:   
-        
-        
-    
+while not game.hasQuit():
+    game.draw()
+    game.update()
