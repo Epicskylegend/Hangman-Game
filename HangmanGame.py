@@ -65,8 +65,8 @@ class Game:
         if missingCharacters != {} and self.lives != 0:
             self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
         elif missingCharacters == {}:
-            self.drawText("You solved the word " + '"', (255,255,255), 550, 800)
-            self.drawText(("".join(wordToSolve) + '"'), (255,255,255), 800, 900)
+            self.drawText("You solved the word ", (255,255,255), 550, 800)
+            self.drawText('"' + ("".join(wordToSolve) + '"'), (255,255,255), 800, 900)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
         if self.lives == 0:
             self.drawText("The word you tried to solve was: " , (255,255,255), 300, 800)
