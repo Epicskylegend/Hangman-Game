@@ -38,7 +38,7 @@ class Game:
         self.armHeight = armHeight
           
         
-        self.text_font = pygame.font.Font("C:\\Users\\adeba\\OneDrive\\Hangman\\Fonts\\EraserRegular-DO1D.ttf", 80)
+        self.text_font = pygame.font.Font("C:\\Users\\adeba\\OneDrive\\Hangman\\Fonts\\EraserRegular-DO1D.ttf", 70)
         self.clock = pygame.time.Clock()
 
 
@@ -62,13 +62,17 @@ class Game:
         self.drawBackground()
         self.drawPole()
         #self.drawText("Welcome to the hangman game.",(255,255,255), self.textX, self.textY) 
-        if missingCharacters != {}:
+        if missingCharacters != {} and self.lives != 0:
             self.drawText("".join(wordToSolve),(255,255,255), 700, 750)
-        else:
-            self.drawText("You solved the word " + "".join(wordToSolve) + " congratulations!", (255,255,255), 500, 750)
+        elif missingCharacters == {}:
+            self.drawText("You solved the word " + '"' + ("".join(wordToSolve) + '"') , (255,255,255), 350, 650)
         self.drawText("Lives: " + str(self.lives) ,(255,255,255), 1420, 90)
+        if self.lives == 0:
+            self.drawText("The word you tried to solve was: " , (255,255,255), 300, 800)
+            self.drawText('"' + ("".join(randWord) + '"'), (255,255,255), 800, 900)
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
-        self.drawText("".join(alphabet), (255,255,255), 230, 900)
+        if self.lives > 0:
+            self.drawText("".join(alphabet), (255,255,255), 230, 900)
         self.drawHangman()
         # hangmanHead = pygame.image.load('C:\\Users\\adeba\\OneDrive\\Images\\Pole.png')
         # hangmanHead = pygame.transform.scale(hangmanHead, (self.headWidth, self.headHeight))
@@ -163,6 +167,8 @@ class Game:
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
                 print(self.lives)
+        
+
            
 
                 
@@ -180,7 +186,8 @@ class Game:
     def removeGuessedLetters(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key) and pygame.key.name(event.key) in alphabet:
-                alphabet.remove(pygame.key.name(event.key))
+                alphabet[pygame.key.name(event.key)] 
+                #alphabet.remove(pygame.key.name(event.key))
                 print(alphabet)
         
 
