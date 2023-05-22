@@ -8,9 +8,9 @@
 
 
 
-### 1. At the start you will be prompted with a random generated word to solve.
+### 1.  At the start you will be prompted with a random generated word to solve.
 
-### 2. You will have to enter in letters on your keyboard to proceed.
+### 2.  You will have to enter in letters on your keyboard to proceed.
 
 ### 3. If you guesse the correct letter, the word on the screen will be updated.
 
