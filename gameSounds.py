@@ -8,9 +8,6 @@ class Sounds:
         self.incorrectLetter = pygame.mixer.Sound('C:\\Users\\adeba\\OneDrive\\Hangman\\Sounds\\ChalkFalling.mp3')
    
 
-   
-
-
     def chalkDrawingSound(self):
         return pygame.mixer.Sound.play(self.correctLetter)
     

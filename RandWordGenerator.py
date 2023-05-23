@@ -1,7 +1,7 @@
 import random
 import math
 
-words = ["pizza", "flower", "cherry", "finished", "persuaded"] # Word to solve
+words = ["pizza", "flower", "cherry", "finished", "persuaded", "sesquipedalian"] # Word to solve
     
 randWord = random.choice(words) # Random word selected from words list
 

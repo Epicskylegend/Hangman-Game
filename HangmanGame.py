@@ -214,7 +214,7 @@ class Game:
             self.exitTimer.reset()
             self.isGameOver = True
             return
-        if self.exitTimer.getTimeElasped() >= 5:
+        if self.exitTimer.getTimeElasped() >= 2:
             pygame.quit()
 
 
