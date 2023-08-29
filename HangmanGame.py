@@ -13,6 +13,7 @@ class Game:
      
         self.hangmanGame = Hangman()
         self.gameTimer = Clock()
+        self.timePerKey = Clock()
         self.exitTimer = Clock()
         self.isGameOver = False
         
@@ -89,6 +90,7 @@ class Game:
             self.drawText('"' + ("".join(randWord) + '"'), (255,255,255), 800, 900)
 
         self.drawText("Time: " + str(self.getTimeElapsed()) ,(255,255,255), 800, 90)
+        # self.drawText("Time: " + str(self.getTimePerKey()) ,(255,255,255), 800, 190)
 
         if self.lives > 0 and missingCharacters != {}:
             self.drawText("".join(alphabet), (255,255,255), 330, 900)
@@ -167,6 +169,12 @@ class Game:
             return self.gameTimer.getTimeElasped()
         else:
             return 0
+        
+    def getTimePerKey(self):
+        if self.lives > 0 and missingCharacters != {} and self.timePerKey.getTimeElasped() < 3:
+            return self.timePerKey.getTimeElasped()
+        else:
+            return self.getTimeElapsed()
 
     # def resetTimer(self):
     #     self.startTIme = time.time()
@@ -181,7 +189,9 @@ class Game:
         # del missingCharacters['\n']
         self.hangmanGame.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
+            if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.gameTimer.getTimeElasped() >= 1 and self.lives > 0:
+                self.gameTimer.reset()
+
                 self.playGameSounds.lostLifeSound()
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
@@ -191,8 +201,9 @@ class Game:
 
                 
 
-            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:
-                
+            elif event.type == pygame.KEYDOWN and pygame.key.name(event.key) in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.gameTimer.getTimeElasped() >= 1  and self.lives > 0:
+                self.gameTimer.reset()
+               
                 for i in (missingCharacters[pygame.key.name(event.key)]):
                     self.playGameSounds.chalkDrawingSound()
                     wordToSolve[i] =  pygame.key.name(event.key)
@@ -210,7 +221,6 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key) and pygame.key.name(event.key) in alphabet:
                 alphabet[pygame.key.name(event.key)] 
-                #alphabet.remove(pygame.key.name(event.key))
                 print(alphabet)
 
     def gameOver(self):
