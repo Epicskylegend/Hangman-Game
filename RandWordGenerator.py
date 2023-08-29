@@ -6,7 +6,7 @@ with open('C:\\Users\\adeba\\OneDrive\\Hangman\\words.txt'.strip('\n')) as f:
 
 randWord = str(random.choice(lines).strip())
 
-print(randWord)
+# print(randWord)
 
 subtract = len(randWord)/2 
 math.ceil(subtract)
