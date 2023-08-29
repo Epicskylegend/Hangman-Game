@@ -176,8 +176,8 @@ class Game:
         else:
             return self.getTimeElapsed()
 
-    # def resetTimer(self):
-    #     self.startTIme = time.time()
+    def resetTimer(self):
+        self.startTIme = time.time()
         
         
 
@@ -185,7 +185,7 @@ class Game:
         self.deltaTime = 0.01 * self.clock.tick()
         self.textX  += 8 * self.deltaTime
         self.textY += 8 * self.deltaTime
-        print(missingCharacters)
+        # print(missingCharacters)
         # del missingCharacters['\n']
         self.hangmanGame.update()
         for event in pygame.event.get():
@@ -195,7 +195,7 @@ class Game:
                 self.playGameSounds.lostLifeSound()
                 self.lives -=1
                 alphabet.remove(pygame.key.name(event.key))
-                print(self.lives)
+                # print(self.lives)
       
 
 
