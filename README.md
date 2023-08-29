@@ -12,7 +12,7 @@
 
 ### 2.  You will have to enter in letters on your keyboard to proceed.
 
-### 3. If you guesse the correct letter, the word on the screen will be updated.
+### 3. If you guess the correct letter, the word on the screen will be updated.
 
 ### 4. If you guess the wrong letter, you'll lose one of your 6 lives and the hangman will start to be drawn.
 
