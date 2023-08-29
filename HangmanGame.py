@@ -8,6 +8,8 @@ from gameSounds import *
 
 class Game:
     def __init__(self, backgroundWidth, backgroundHeight, poleWidth, poleHeight, headWidth, headHeight, bodyWidth, bodyHeight, legWidth, legHeight, armWidth, armHeight, lives):
+
+     
      
         self.hangmanGame = Hangman()
         self.gameTimer = Clock()
@@ -175,6 +177,8 @@ class Game:
         self.deltaTime = 0.01 * self.clock.tick()
         self.textX  += 8 * self.deltaTime
         self.textY += 8 * self.deltaTime
+        print(missingCharacters)
+        # del missingCharacters['\n']
         self.hangmanGame.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key) not in missingCharacters.keys() and pygame.key.name(event.key) in alphabet and missingCharacters != {} and self.lives > 0:

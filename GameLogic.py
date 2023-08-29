@@ -1,9 +1,9 @@
 import random
+import re
 
 missingCharacters = {}
 wordToSolve = []
 randNumList = []
-
 
 # Function for replacing missing letters when user guess correct letter(s)
 def replaceMissingCharacters(missingCharacters, validLetter):
@@ -22,10 +22,10 @@ def replacingAndStoringLetters(numLettersToRemove):
 
         randNumList.pop(letterToReplace)
 
-        wordToSolve[indexReplaced] = "_"     
-
+        wordToSolve[indexReplaced] = "_"
+      
         
 # Function that removes letters from dictionary once they've been guessed
 def removeLetterFromDict(validLetter):
     missingCharacters.pop(validLetter)
-    
+   
